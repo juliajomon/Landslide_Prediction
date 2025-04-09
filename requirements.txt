@@ -1,4 +1,5 @@
+opencv-python
+flask
+flask-cors
 tensorflow
-h5py
 numpy
-matplotlib
