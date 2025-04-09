@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Landslide Prediction</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Landslide Prediction</h1>
+    <form id="predict-form">
+      <input type="file" name="file" accept=".h5" required />
+      <button type="submit">Upload & Predict</button>
+    </form>
+    <div id="result"></div>
+    <div id="images">
+      <h3>Generated Image</h3>
+      <img id="predictedImage" src="" alt="Predicted Image" />
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
