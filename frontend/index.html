@@ -1,47 +1,102 @@
 <!DOCTYPE html>
+<!-- Declares the document type and version of HTML used -->
+
 <html lang="en">
+<!-- Root element of the HTML document, specifying English as the language -->
+
 <head>
   <meta charset="UTF-8" />
+  <!-- Sets the character encoding to UTF-8 -->
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- Makes the website responsive by controlling layout on different screen sizes -->
+
   <title>Landslide Prediction</title>
+  <!-- Sets the title of the web page shown in the browser tab -->
+
   <link rel="stylesheet" href="styles.css" />
+  <!-- Links an external CSS file to style the webpage -->
 </head>
+
 <body>
+<!-- Begins the body section which contains all visible content -->
 
 <header class="header">
+  <!-- Header section containing the logo and navigation bar -->
+
   <a href="#" class="logo">Landslide Prediction</a>
+  <!-- Logo of the website that links to the top of the page -->
+
   <nav class="navbar">
+    <!-- Navigation bar -->
+
     <a href="#home" class="active">Home</a>
+    <!-- Link to the home section -->
+
     <a href="#upload">Upload</a>
+    <!-- Link to the upload section -->
   </nav>
 </header>
 
 <section class="home" id="home">
+  <!-- Home section of the webpage -->
+
   <div class="home-content">
+    <!-- Container for home section text -->
+
     <h1>Welcome to Landslide Prediction System</h1>
+    <!-- Main heading -->
+
     <h3>Stay Prepared, Stay Safe</h3>
+    <!-- Subheading -->
+
     <p>This system allows you to predict landslides based on satellite image data using deep learning.</p>
+    <!-- Paragraph describing the system -->
   </div>
 </section>
 
 <section class="upload-section" id="upload">
+  <!-- Upload section for file submission -->
+
   <div class="upload-container">
+    <!-- Container for upload form -->
+
     <h2>Upload for Prediction</h2>
+    <!-- Heading for upload form -->
+
     <form id="uploadForm">
+      <!-- Form for file upload -->
+
       <input type="file" id="fileInput" name="file" accept=".h5" required />
+      <!-- File input field accepting only .h5 files -->
+
       <br />
+      <!-- Line break -->
+
       <button type="submit">Predict</button>
+      <!-- Button to submit the form -->
     </form>
 
     <div id="imagesContainer" style="display: none; margin-top: 20px;">
+      <!-- Container to display original and predicted images, initially hidden -->
+
       <div style="display: flex; gap: 20px;">
+        <!-- Flex container to align images side by side with gap -->
+
         <div>
           <h4>Original Image</h4>
+          <!-- Label for original image -->
+
           <img id="originalImage" src="" alt="Original" width="200" />
+          <!-- Placeholder for displaying original image -->
         </div>
+
         <div>
           <h4>Predicted Image</h4>
+          <!-- Label for predicted image -->
+
           <img id="predictedImage" src="" alt="Prediction" width="200" />
+          <!-- Placeholder for displaying predicted image -->
         </div>
       </div>
     </div>
@@ -49,30 +104,38 @@
 </section>
 
 <script>
+  // Adds an event listener for form submission
   document.getElementById("uploadForm").addEventListener("submit", async function (e) {
-    e.preventDefault();
+    e.preventDefault(); // Prevents the default form submission behavior (page reload)
 
-    const fileInput = document.getElementById("fileInput");
-    const file = fileInput.files[0];
-    const formData = new FormData();
-    formData.append("file", file);
+    const fileInput = document.getElementById("fileInput"); // Gets the file input element
+    const file = fileInput.files[0]; // Retrieves the selected file
+    const formData = new FormData(); // Creates a new FormData object
+    formData.append("file", file); // Appends the file to the form data
 
     try {
+      // Sends a POST request to the backend server
       const response = await fetch("http://127.0.0.1:5000/upload", {
         method: "POST",
         body: formData,
       });
 
-      const data = await response.json();
+      const data = await response.json(); // Parses the JSON response
 
       if (response.ok) {
-        document.getElementById("imagesContainer").style.display = "block";
+        // If request was successful
+
+        document.getElementById("imagesContainer").style.display = "block"; // Shows the image container
+
+        // Sets the src attributes of the images using base64 data
         document.getElementById("originalImage").src = `data:image/png;base64,${data.original}`;
         document.getElementById("predictedImage").src = `data:image/png;base64,${data.predicted}`;
       } else {
+        // If the server returns an error
         alert("Error: " + (data.error || "Unknown error"));
       }
     } catch (error) {
+      // Handles network or other errors
       alert("Upload failed: " + error.message);
     }
   });
