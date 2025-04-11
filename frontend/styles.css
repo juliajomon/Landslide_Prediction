@@ -1,144 +1,144 @@
 :root {
-  --bg-color: #1f242d;
-  --main-color: rgb(195, 236, 61);
-  --text-color: #ffffff;
+  --bg-color: #1f242d;                    /* Defines a dark background color as a CSS variable */
+  --main-color: rgb(195, 236, 61);        /* Defines a vibrant lime green as the main accent color */
+  --text-color: #ffffff;                  /* Defines white as the default text color */
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  scroll-behavior: smooth;
-  font-family: 'Segoe UI', sans-serif;
+  margin: 0;                              /* Removes default margin for all elements */
+  padding: 0;                             /* Removes default padding for all elements */
+  box-sizing: border-box;                /* Includes padding and border within the element's total width and height */
+  scroll-behavior: smooth;               /* Enables smooth scrolling */
+  font-family: 'Segoe UI', sans-serif;   /* Sets default font for all elements */
 }
 
 body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
+  background-color: var(--bg-color);     /* Applies dark background to the body */
+  color: var(--text-color);              /* Sets default text color to white */
 }
 
 /* Header */
 .header {
-  position: fixed;
-  width: 100%;
+  position: fixed;                       /* Fixes header at the top of the screen */
+  width: 100%;                           /* Makes header span full width */
   top: 0;
   left: 0;
-  padding: 1rem 5%;
-  background: var(--bg-color);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+  padding: 1rem 5%;                      /* Adds padding inside the header */
+  background: var(--bg-color);           /* Applies dark background */
+  display: flex;                         /* Uses flexbox for layout */
+  justify-content: space-between;       /* Distributes space between logo and navbar */
+  align-items: center;                   /* Vertically centers items */
+  z-index: 1000;                         /* Ensures header stays on top of other elements */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4); /* Adds subtle shadow for depth */
 }
 
 .logo {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: var(--text-color);
+  font-size: 1.8rem;                     /* Increases font size */
+  font-weight: bold;                    /* Makes logo text bold */
+  color: var(--text-color);              /* White color */
 }
 
 .navbar a {
-  margin-left: 20px;
+  margin-left: 20px;                    /* Adds space between navbar links */
   font-size: 1rem;
-  color: var(--text-color);
-  text-decoration: none;
+  color: var(--text-color);              /* White color */
+  text-decoration: none;                /* Removes underline */
 }
 
 .navbar a.active,
 .navbar a:hover {
-  color: var(--main-color);
+  color: var(--main-color);              /* Highlights active/hovered link in lime green */
 }
 
 /* Home Section */
 .home {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 100vh;                         /* Full viewport height */
+  display: flex;                         /* Flexbox layout */
+  justify-content: center;              /* Center horizontally */
+  align-items: center;                  /* Center vertically */
   text-align: center;
-  padding: 5rem 2rem 2rem;
-  background: url('bg.jpeg') no-repeat center center/cover;
-  position: relative;
+  padding: 5rem 2rem 2rem;              /* Padding around content */
+  background: url('bg.jpeg') no-repeat center center/cover; /* Background image */
+  position: relative;                   /* Allows absolute children like ::before */
 }
 
 .home::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(8px);
-  z-index: 0;
+  content: "";                           /* Creates a layer for overlay */
+  position: absolute;                   /* Absolute positioning for full coverage */
+  inset: 0;                              /* Top, right, bottom, left = 0 */
+  background: rgba(0, 0, 0, 0.4);        /* Semi-transparent black overlay */
+  backdrop-filter: blur(8px);           /* Applies blur to background */
+  z-index: 0;                            /* Puts the overlay behind content */
 }
 
 .home-content {
   position: relative;
-  z-index: 1;
+  z-index: 1;                            /* Ensures content appears above overlay */
 }
 
 .home-content h1 {
-  font-size: 3rem;
+  font-size: 3rem;                       /* Large heading size */
   margin-bottom: 1rem;
 }
 
 .home-content h3 {
   font-size: 1.8rem;
-  color: var(--main-color);
+  color: var(--main-color);              /* Green accent for subheading */
   margin-bottom: 1rem;
 }
 
 .home-content p {
   font-size: 1.2rem;
-  max-width: 600px;
-  margin: auto;
+  max-width: 600px;                     /* Limits paragraph width */
+  margin: auto;                         /* Centers paragraph */
 }
 
 /* Upload Section */
 .upload-section {
-  min-height: 100vh;
-  padding: 8rem 2rem 4rem;
+  min-height: 100vh;                     /* At least full height */
+  padding: 8rem 2rem 4rem;              /* Top-heavy padding for spacing below header */
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #121212;
+  background-color: #121212;             /* Slightly darker background */
 }
 
 .upload-container {
-  background-color: #293635;
+  background-color: #293635;             /* Dark green-gray container */
   padding: 30px;
-  border-radius: 20px;
+  border-radius: 20px;                   /* Rounded corners */
   text-align: center;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Soft glow around the container */
   max-width: 500px;
-  width: 100%;
+  width: 100%;                           /* Responsive width */
 }
 
 .upload-container h2 {
   margin-bottom: 1rem;
   font-size: 2rem;
-  color: var(--main-color);
+  color: var(--main-color);              /* Highlight heading in lime green */
 }
 
 .upload-container input[type="file"] {
   margin: 15px 0;
   color: white;
   background: transparent;
-  border: none;
+  border: none;                          /* No border on file input */
 }
 
 .upload-container button {
   padding: 10px 20px;
   border: none;
   border-radius: 8px;
-  background-color: var(--main-color);
-  color: #1f242d;
+  background-color: var(--main-color);   /* Green button */
+  color: #1f242d;                        /* Dark text on light button */
   font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  cursor: pointer;                       /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth color change on hover */
 }
 
 .upload-container button:hover {
-  background-color: #d6f35e;
+  background-color: #d6f35e;             /* Lighter green on hover */
 }
 
 #result {
@@ -148,7 +148,7 @@ body {
 }
 
 #previewImage {
-  max-width: 100%;
+  max-width: 100%;                      /* Responsive image size */
   margin-top: 20px;
-  border-radius: 10px;
+  border-radius: 10px;                  /* Rounded image corners */
 }
